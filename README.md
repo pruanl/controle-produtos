@@ -19,11 +19,10 @@ Este projeto é um sistema de controle de produtos, desenvolvido utilizando Lara
 
 ## Funcionalidades
 
-- **CRUD de Produtos**: Criar, ler, atualizar e deletar produtos.
+- **Criação e Listagem de Categorias e Produtos**
 - **Upload de Imagens**: Enviar imagens para o endpoint `/api/upload/imagem` e associá-las aos produtos.
 - **Autenticação**: Login e gerenciamento de sessão com tokens Bearer.
 - **Filtragem e Paginação**: Listagem de produtos com filtros e paginação.
-- **Validação**: Camada de validação separada utilizando `ProductRequest` em vez de `Request`.
 
 ## Estrutura do Projeto
 
