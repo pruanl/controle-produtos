@@ -1,7 +1,3 @@
-Claro! Aqui está o README atualizado com as informações adicionais:
-
----
-
 # Sistema de Controle de Produtos
 
 Este projeto é um sistema de controle de produtos, desenvolvido utilizando Laravel 11 e Vue 3. O sistema permite gerenciar produtos contendo nome, situação, preço, categoria e foto.
