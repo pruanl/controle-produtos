@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useAuthStore } from './stores/auth'
 import router from './router'
 
-axios.defaults.baseURL = 'http://localhost:8001'
+axios.defaults.baseURL = 'http://localhost'
 
 axios.interceptors.request.use(config => {
     const authStore = useAuthStore()

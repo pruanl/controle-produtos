@@ -147,7 +147,7 @@ export default defineComponent({
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get('/api/category?status=active');
+        const response = await axios.get('/api/category?situation=1');
         categories.value = response.data;
       } catch (error) {
         console.error('Error fetching categories', error);

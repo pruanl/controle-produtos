@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Api\Image;
 use App\Models\Models\Api\Product;
 use App\Repositories\Api\ProductRepository;
+use App\Services\Api\ProductServices;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -16,16 +17,16 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
 
-    private $productRepository;
+    private $productService;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductServices $productService)
     {
-        $this->productRepository = $productRepository;
+        $this->productService = $productService;
     }
 
     public function index(Request $request)
     {
-        $products = $this->productRepository->all($request);
+        $products = $this->productService->all($request);
         return response()->json($products);
     }
 
@@ -53,7 +54,7 @@ class ProductController extends Controller
             }
         }
 
-        $product = $this->productRepository->create($request->all());
+        $product = $this->productService->create($request->all());
         return response()->json($product);
     }
 
@@ -62,8 +63,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = $this->productRepository->find($id);
-        return response()->json($product);
+        return response()->json(['message' => 'Method not allowed'], 405);
     }
 
 

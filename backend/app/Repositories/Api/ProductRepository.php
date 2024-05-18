@@ -6,14 +6,23 @@ namespace App\Repositories\Api;
 use App\Models\Api\Image;
 use App\Models\Models\Api\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductRepository
 {
-    public function all(Request $request)
+    public function create(array $data)
+    {
+        return Product::create($data);
+    }
+
+    public function find(int $id)
+    {
+        return Product::findOrFail($id);
+    }
+    public function getFilteredProducts(Request $request)
     {
         $query = Product::query();
 
-        // Aplicar filtros se fornecidos
         if ($request->has('name') &&  $request->name != null) {
             $query->where('name', 'like', '%' . $request->query('name') . '%');
         }
@@ -35,12 +44,7 @@ class ProductRepository
             $query->where('situation', $request->query('situation') == true);
         }
 
-        $perPage = $request->query('per_page', 3); // Número de itens por página, padrão para 10
+        $perPage = $request->query('per_page', 3); // Número de itens por página, padrão para 3
         return $query->with('category')->paginate($perPage);
-    }
-
-    public function find(int $id)
-    {
-        return Product::findOrFail($id);
     }
 }
