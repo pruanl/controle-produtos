@@ -25,13 +25,16 @@ RUN apt-get update && apt-get install -y \
 
 
 # Install Composer
-COPY --from=composer:2.1 /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 
 # Copy existing application directory contents
 COPY . /var/www
 
 # Copy PHP-FPM configuration
 COPY php-fpm.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+
+RUN composer install
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh

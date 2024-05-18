@@ -6,7 +6,7 @@ FROM node:20
 WORKDIR /app
 
 # Install dependencies
-COPY package.json yarn.lock ./
+COPY package.json ./
 RUN yarn install
 
 # Copy application files
