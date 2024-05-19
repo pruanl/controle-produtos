@@ -22,7 +22,7 @@ class ProductServices
             return $this->productRepository->getFilteredProducts($request);
         });
 
-        return response()->json($products);
+        return $products;
     }
 
     public function create(array $data)
